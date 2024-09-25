@@ -12,6 +12,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        Recoleta: ['Recoleta', 'sans-serif'], // Add your custom font here
+      },
     },
   },
   plugins: [],
