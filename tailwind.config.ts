@@ -13,7 +13,8 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        Recoleta: ['Recoleta', 'sans-serif'], // Add your custom font here
+        Recoleta: ['Recoleta', 'sans-serif'],
+        Corporative: ['corporative-sans', 'sans-serif']
       },
     },
   },
