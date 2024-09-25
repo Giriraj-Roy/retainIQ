@@ -10,7 +10,7 @@ const HeaderInput = () => {
         <input
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            className='font-Recoleta text-4xl text-[#283054] font-bold ml-2 pl-4 py-2 border-b-[#283054] border-b-2 outline-none'
+            className='font-Recoleta text-3xl text-[#283054] font-bold ml-2 pl-4 py-1 border-b-[#283054] border-b-2 outline-none'
             placeholder='Enter Name'
             maxLength={30}
         />

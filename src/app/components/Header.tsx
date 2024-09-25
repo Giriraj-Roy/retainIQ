@@ -4,7 +4,7 @@ import HeaderInput from './HeaderInput'
 
 const Header = () => {
   return (
-    <div className='my-6 px-8 pb-6 flex font-Recoleta justify-between border-b-[1px]'>
+    <div className='w-[100%] my-6 px-8 pb-6 flex font-Recoleta justify-between border-b-[1px]'>
       <HeaderInput/>
       <FeedBtn/>
     </div>
