@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar'
 
 const Dashboard = () => {
   return (
-    <div className='w-[100%] h-[100vh] flex'>
+    <div className='w-[100%] min-h-[100vh] flex'>
       <Navbar />
       <div className='w-[95vw] px-8'>
         <Header/>
