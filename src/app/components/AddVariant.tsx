@@ -9,7 +9,7 @@ const AddVariant : React.FC<{index : number}> = ({index}) => {
 
   const handleAddVariant = ()=>{
     let dummy = [...listItems];
-    dummy[index].variants.push({id: Math.random(), image: "https://picsum.photos/100"})
+    dummy[index].variants.push({id: Math.random(), image: ""})
     setListItems(dummy)
   }
   return (

@@ -17,9 +17,10 @@ interface ListItemsProps{
 const ListItem : React.FC<ListItemsProps> = ({item,index}) => {
 
     const [openModal, setOpenModal] = useState<boolean>(false)
-    const [image, setImage] = useState<string>('')
-    const { listItems, setListItems } = useAppContext()
     const [isVisible, setIsVisible] = useState<boolean>(false);
+    const [currVar, setCurrVar] = useState<number>(0)
+    
+    const { listItems, setListItems } = useAppContext()
 
     const handleDelete = ()=>{
         let dummy = [...listItems]
@@ -27,9 +28,11 @@ const ListItem : React.FC<ListItemsProps> = ({item,index}) => {
         setListItems(dummy)
     }
 
-    useEffect(()=>{
-        
-    },[image])
+    // useEffect(()=>{
+    //     let dummy = [...listItems]
+    //     dummy[index].variants[currVar].image = image
+    //     setListItems(dummy)        
+    // },[image])
 
   return (
     <div className='flex w-[100%] bg-transparent'>
@@ -70,7 +73,7 @@ const ListItem : React.FC<ListItemsProps> = ({item,index}) => {
                     <div key={idx} className='w-[33.33%] border-r-2 flex justify-center items-center flex-shrink-0'>
                         <div className='w-[70%] h-[90%] bg-white border-dashed border-4 rounded-md flex justify-center items-center'>
                         {
-                            ele.image==undefined ?
+                            ele.image.length>0 ?
                                         <div className='flex flex-col justify-center items-center'>
                                             <img src={ele.image} alt="design" 
                                                     className='my-1'
@@ -84,7 +87,7 @@ const ListItem : React.FC<ListItemsProps> = ({item,index}) => {
                                         </div>
                                 
                                 :
-                                <div onClick={()=>setOpenModal(true)} className='py-2 flex justify-center items-center w-[70%] border-2 rounded-md bg-white font-Corporative text-sm cursor-pointer'>
+                                <div onClick={()=>{setOpenModal(true); setCurrVar(idx);}} className='py-2 flex justify-center items-center w-[70%] border-2 rounded-md bg-white font-Corporative text-sm cursor-pointer'>
                                     <Image src={plus} alt='plus' className='h-[1.25rem] w-[1.25rem]'/> Add Design
                                 </div>
                         }
@@ -95,10 +98,10 @@ const ListItem : React.FC<ListItemsProps> = ({item,index}) => {
         }
         <AddVariant index={index} />
 
-        </div>
         {
-            openModal && <Modal setOpenModal={setOpenModal} image={image} setImage={setImage} />
+            openModal && <Modal setOpenModal={setOpenModal} index={index} currVar={currVar} />
         }
+        </div>
 
     </div>
   )

@@ -1,13 +1,24 @@
 import React, { useState } from "react";
+import useAppContext from "../utils/useAppContext";
 
 interface ModalProps {
-  image: string;
+  currVar : number;
+  index: number;
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setImage: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Modal: React.FC<ModalProps> = ({ setOpenModal, image, setImage }) => {
+const Modal: React.FC<ModalProps> = ({ setOpenModal, index, currVar }) => {
   const [search, setSearch] = useState<string>("");
+  const { listItems, setListItems } = useAppContext()
+
+  
+  const handleInsert = (image : string)=>{
+    let dummy = [...listItems]
+    dummy[index].variants[currVar].image = image
+    setListItems(dummy)
+    setOpenModal(false)
+  }
+
   const arr = Array(20).fill('https://picsum.photos/100')
 
   return (
@@ -33,8 +44,19 @@ const Modal: React.FC<ModalProps> = ({ setOpenModal, image, setImage }) => {
         <div className="mt-10 w-[100%] h-[70%] flex flex-wrap overflow-auto justify-center">
           {
             arr.map((ele,index)=>{
+              const [isVisible, setIsVisible] = useState<boolean>(false);
               return (
-                <div className="w-[100px] h-[100px] m-2">
+                <div className="relative w-[100px] h-[100px] m-2"
+                      onMouseEnter={() => setIsVisible(true)}
+                      onMouseLeave={() => setIsVisible(false)}
+                >
+                  { isVisible && 
+                    <div className="absolute top-[30px] left-[20px] p-2 text-black bg-white rounded-md cursor-pointer"
+                          onClick={() =>handleInsert(ele)} 
+                    >
+                      Insert
+                    </div>
+                  }
                   <img src={ele} alt="images" />
                 </div>
               )
