@@ -25,9 +25,8 @@ const ListHead = () => {
             Product Filter
         </div>
         <div className='w-[60%] overflow-scroll flex '>
-            {
-                // listItems?.variants?.length > 0 &&            
-                [1,2,3,4]?.map((ele, index)=>{
+            {        
+                arr?.map((ele, index)=>{
                     return(
                         <div className='w-[33.33%] py-4 flex flex-shrink-0 justify-between items-center border-r-2'>
                             <span className='font-Corporative text-lg text-[#607d8b] font-semibold  ml-6'>
@@ -40,9 +39,7 @@ const ListHead = () => {
                         </div>
 
                     )
-
                 })
-
             }
         </div>
 
