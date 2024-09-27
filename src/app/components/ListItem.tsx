@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import menu9 from '../assets/menu9.png'
+import React, { useEffect, useState } from 'react';
+import menu9 from '../assets/menu9.png';
+import deleteImg from '../assets/delete.png'
 import Image from 'next/image'
 import plus from '../assets/plus.png'
 import useAppContext from '../utils/useAppContext'
@@ -18,6 +19,7 @@ const ListItem : React.FC<ListItemsProps> = ({item,index}) => {
     const [openModal, setOpenModal] = useState<boolean>(false)
     const [image, setImage] = useState<string>('')
     const { listItems, setListItems } = useAppContext()
+    const [isVisible, setIsVisible] = useState<boolean>(false);
 
     const handleDelete = ()=>{
         let dummy = [...listItems]
@@ -25,10 +27,21 @@ const ListItem : React.FC<ListItemsProps> = ({item,index}) => {
         setListItems(dummy)
     }
 
+    useEffect(()=>{
+        
+    },[image])
+
   return (
     <div className='flex w-[100%] bg-transparent'>
-        <div className='w-[5%] border-r-2 flex flex-col justify-center items-center '>
-            <span onClick={handleDelete} className='text-xs'> Delete </span>
+        <div
+            className='w-[5%] border-r-2 flex flex-col justify-center items-center '
+            onMouseEnter={() => setIsVisible(true)}
+            onMouseLeave={() => setIsVisible(false)}
+        >
+            {   isVisible &&
+                <Image onClick={handleDelete} src={deleteImg} alt='delete' className='h-[2rem] w-[2rem] cursor-pointer'/>
+            }
+
             <div className='flex justify-around items-center font-Recoleta font-[1000] text-3xl text-[#283054] '>
                 <span className=''>{index+1}</span>
                 <Image src={menu9} alt='menu' className='h-[2rem] w-[2rem]'/>
@@ -39,10 +52,14 @@ const ListItem : React.FC<ListItemsProps> = ({item,index}) => {
             <div className='w-[90%] h-[10rem] bg-white flex justify-center items-center text-sm font-Corporative border-dashed border-2 rounded-md 
             [&>*]:px-2 [&>*]:py-1 [&>*]:mx-1 [&>*]:border-[1px] [&>*]:rounded-md [&>*]:font-bold
             '>
-                {
+                {   item.filters?.length > 0 ?
                     item?.filters.map((ele,index)=>{
                         return <div key={index}>{ele}</div>
                     })
+                    :
+                    <div>
+                        Add Product Filters
+                    </div>
                 }
             </div>
         </div>
