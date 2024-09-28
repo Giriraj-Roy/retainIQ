@@ -159,12 +159,17 @@ Build the project from source:
 ```sh
 ❯ npm install
 ```
+3. Run Locally:
+```sh
+❯ npm run dev
+```
+A development server will open in https://localhost:3000 
 
 ###  Usage
 
-To run the project, execute the following command:
+To build the project, execute the following command:
 
 ```sh
-❯ npm run build && node dist/main.js
+❯ npm run build
 ```
 ---
