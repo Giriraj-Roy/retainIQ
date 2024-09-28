@@ -8,6 +8,8 @@ const ListFooter = () => {
 
   const {listItems, setListItems} = useAppContext();
 
+  // Adds New rows for design elements to ListItems
+  // Also Includes one Primary variant
   const handleAddItem = ()=>{
     let dummy = [...listItems];
     dummy.push({id: Math.random(), filters: getRandomWords(3), variants : [{id: Math.random(), image: "https://picsum.photos/100"}]});
