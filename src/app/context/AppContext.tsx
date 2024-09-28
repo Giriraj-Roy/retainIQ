@@ -11,22 +11,17 @@ interface AppProviderProps {
     children : React.ReactNode
 }
 
-interface variant {
-  id: number,
-  image: string
-}
-
+// AppContext created with Type Interface declared in AppContextType
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 
 
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
-    const [listItems, setListItems] = useState<ListItemProps[]>([])
+    const [listItems, setListItems] = useState<ListItemProps[]>([]) // All the items in the rows are elements of array of listItems
 
-  
+    // context values passed here as objects to be propagated to the AppProvider
     const value = {
       listItems, setListItems
-        
     }
   
     return (

@@ -3,10 +3,16 @@ import React from "react";
 import plus from "../assets/plus.png";
 import useAppContext from "../utils/useAppContext";
 
-const AddVariant : React.FC<{index : number}> = ({index}) => {
+/**
+ * @returns a plus signed CTA which eventually
+ *  will be used to add a new Variant to every item of the list
+ */
+
+const AddVariant : React.FC<{index : number}> = () => {
 
   const {listItems, setListItems} = useAppContext();
 
+  // Function to Add Variant to every element in the listItems array when called upon
   const handleAddVariant = ()=>{
     let dummy = [...listItems];
     dummy.forEach((ele,index)=>{

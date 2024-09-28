@@ -5,28 +5,32 @@ import ListFooter from './ListFooter';
 import useAppContext from '../utils/useAppContext';
 
 const DragDropList: React.FC = () => {
-  const [items, setItems] = useState<string[]>(['Item 1', 'Item 2', 'Item 3', 'Item 4']);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
   const {listItems, setListItems} = useAppContext();
 
-
+  // Logic handled to drag and drop items in the listItems
+  // Set the Draggable index to curr index when drag starts
   const handleDragStart = (index: number) => {
     setDraggedIndex(index);
   };
-
+  // We a using conventional replace and push back method to ensure the drag feature
   const handleDragOver = (index: number) => {
     if (draggedIndex === null) return;
     if (index !== draggedIndex) {
-      const updatedItems = [...listItems];
+      const updatedItems = [...listItems]; // copy elements with new reference
       const draggedItem = updatedItems[draggedIndex];
+
+      //  Replace and Push Back
       updatedItems.splice(draggedIndex, 1);
       updatedItems.splice(index, 0, draggedItem);
+      
+      // Update the elements
       setListItems(updatedItems);
       setDraggedIndex(index);
     }
   };
-
+  // update the drag index to null to ensure avoiding any confusion
   const handleDrop = () => {
     setDraggedIndex(null);
   };
@@ -42,11 +46,8 @@ const DragDropList: React.FC = () => {
             onDragStart={() => handleDragStart(index)}
             onDragOver={() => handleDragOver(index)}
             onDrop={handleDrop}
-            className={`bg-gray-200 rounded cursor-move ${
-              draggedIndex === index ? 'bg-transparent' : 'bg-transparent'
-            }`}
+            className={`bg-gray-200 rounded cursor-move ${ draggedIndex === index ? 'bg-transparent' : 'bg-transparent' }`}
           >
-            {/* {item} */}
             <ListItem item={item} index={index}/>
           </li>
         ))}

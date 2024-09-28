@@ -1,5 +1,9 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+/**
+ * Custom Hook to access AppContext Easily
+ * @returns the context fetched from AppContext
+ */
 
 const useAppContext = () => {
   const context = useContext(AppContext);
