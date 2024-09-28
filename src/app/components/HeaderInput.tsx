@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import arrow from '../assets/arrow.png'
 
+// Accepts the title of the design
 const HeaderInput = () => {
     const [value, setValue] = useState("")
   return (

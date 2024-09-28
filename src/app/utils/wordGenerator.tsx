@@ -1,3 +1,11 @@
+/**
+ * 
+ * An Utility function to generate random words for Product chips and Images
+ * @params : numWords - specifies the number of words required
+ * @returns an array of length numWords specified
+ */
+
+
 export function getRandomWords(numWords: number) {
 
   const wordsArray = paragraph.split(" ");
