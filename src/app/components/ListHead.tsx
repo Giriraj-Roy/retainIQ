@@ -2,8 +2,8 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import menu3 from '../assets/menu3.png'
 import useAppContext from '../utils/useAppContext'
-import { ListItemProps } from '../utils/interfaces'
 
+// Title of all the rows and variants to be identified
 const ListHead = () => {
     const { listItems } = useAppContext()
     
